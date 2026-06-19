@@ -1,6 +1,6 @@
 {
   "name": "sessiondown",
-  "version": "0.0.0-alpha.1",
+  "version": "0.0.0-alpha.2",
   "description": "Coding-agent sessions in, Markdown out. A library + CLI for Claude Code, Codex, pi, and opencode.",
   "keywords": [
     "claude-code",
@@ -23,7 +23,7 @@
     "url": "git+https://github.com/franky47/sessiondown.git"
   },
   "bin": {
-    "sessiondown": "./dist/main.mjs"
+    "sessiondown": "dist/main.mjs"
   },
   "files": [
     "dist"
