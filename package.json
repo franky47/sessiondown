@@ -1,0 +1,46 @@
+{
+  "name": "sessiondown",
+  "version": "0.0.0",
+  "description": "Coding-agent sessions in, Markdown out. A library + CLI for Claude Code, Codex, pi, and opencode.",
+  "license": "MIT",
+  "bin": {
+    "sessiondown": "./dist/main.js"
+  },
+  "type": "module",
+  "imports": {
+    "#renderer/render": "./src/renderer/render.ts",
+    "#renderer/types": "./src/renderer/types.ts",
+    "#utc-day": "./src/utc-day.ts",
+    "#agents/opencode/pull": "./src/agents/opencode/pull/index.ts",
+    "#agents/*": "./src/agents/*.ts",
+    "#*": "./src/*.ts"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "bun build src/main.ts --target node --outdir dist",
+    "check": "bun run fmt:check && bun run lint && bun run typecheck && bun run test && bun run knip",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "knip": "knip",
+    "lint": "oxlint src/",
+    "sessiondown": "bun src/main.ts",
+    "test": "bun test",
+    "typecheck": "tsgo --noEmit"
+  },
+  "dependencies": {
+    "diff": "^9.0.0",
+    "tinyglobby": "^0.2.15",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^25.6.2",
+    "@typescript/native-preview": "^7.0.0-dev.20260404.1",
+    "knip": "^6.12.2",
+    "oxfmt": "^0.48.0",
+    "oxlint": "^1.58.0",
+    "oxlint-tsgolint": "^0.22.1"
+  }
+}
