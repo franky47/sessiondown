@@ -1,12 +1,36 @@
 {
   "name": "sessiondown",
-  "version": "0.0.0",
+  "version": "0.0.0-alpha.1",
   "description": "Coding-agent sessions in, Markdown out. A library + CLI for Claude Code, Codex, pi, and opencode.",
+  "keywords": [
+    "claude-code",
+    "cli",
+    "codex",
+    "coding-agent",
+    "jsonl",
+    "markdown",
+    "opencode",
+    "pi",
+    "session",
+    "transcript"
+  ],
+  "homepage": "https://github.com/franky47/sessiondown#readme",
+  "bugs": "https://github.com/franky47/sessiondown/issues",
   "license": "MIT",
-  "bin": {
-    "sessiondown": "./dist/main.js"
+  "author": "François Best <github@francoisbest.com> (https://francoisbest.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franky47/sessiondown.git"
   },
+  "bin": {
+    "sessiondown": "./dist/main.mjs"
+  },
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "sideEffects": false,
+  "types": "./dist/index.d.mts",
   "imports": {
     "#renderer/render": "./src/renderer/render.ts",
     "#renderer/types": "./src/renderer/types.ts",
@@ -16,15 +40,25 @@
     "#*": "./src/*.ts"
   },
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
-    "build": "bun build src/main.ts --target node --outdir dist",
+    "build": "tsdown",
     "check": "bun run fmt:check && bun run lint && bun run typecheck && bun run test && bun run knip",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "knip": "knip",
     "lint": "oxlint src/",
+    "prepack": "bun run build",
+    "prepublishOnly": "bun run check",
     "sessiondown": "bun src/main.ts",
     "test": "bun test",
     "typecheck": "tsgo --noEmit"
@@ -41,6 +75,10 @@
     "knip": "^6.12.2",
     "oxfmt": "^0.48.0",
     "oxlint": "^1.58.0",
-    "oxlint-tsgolint": "^0.22.1"
+    "oxlint-tsgolint": "^0.22.1",
+    "tsdown": "^0.22.3"
+  },
+  "engines": {
+    "node": ">=22.5.0"
   }
 }
