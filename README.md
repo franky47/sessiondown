@@ -107,10 +107,3 @@ bun test          # bun:test, co-located *.test.ts
 bun run check     # fmt + lint + typecheck + test + knip
 bun run build     # Node-compatible bundle → dist/main.js
 ```
-
-## Scope (v1)
-
-Sessions in, Markdown out — deliberately narrow. Out of scope for now:
-memories/sidecar artifacts, remote/SSH discovery, content-sniff agent detection,
-a config file, and structured per-agent metadata in the typed API. Each was
-chosen to be a clean additive upgrade later, not a rewrite.
